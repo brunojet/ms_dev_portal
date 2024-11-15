@@ -37,6 +37,26 @@
           }
         }
       }
+    },
+    {
+      "label": "Build Angular Project",
+      "type": "shell",
+      "command": "ng build --configuration production --base-href \"https://brunojet.github.io/ms_dev_portal/\"",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Deploy to GitHub Pages",
+      "type": "shell",
+      "command": "npx angular-cli-ghpages --dir=dist/ms_dev_portal/browser",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
     }
   ]
 }

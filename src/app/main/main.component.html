@@ -1,0 +1,9 @@
+<h2>Bem-vindo à página principal!</h2>
+<nav *ngIf="isDev && !isAdmin" class="dev-menu">
+    <ul>
+        <li><a routerLink="/request-app-registration">Requisitar Cadastro de Aplicativo</a></li>
+        <li><a routerLink="/request-app-publication">Requisitar Publicação de Aplicativo</a></li>
+    </ul>
+</nav>
+<p *ngIf="isAdmin">Você tem acesso total.</p>
+<p *ngIf="isDev && !isAdmin">Você pode abrir requisições.</p>

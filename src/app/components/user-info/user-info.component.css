@@ -1,0 +1,13 @@
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
