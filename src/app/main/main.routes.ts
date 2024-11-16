@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main.component';
-import { RequestAppRegistrationComponent } from '../components/app-registration/app-registration.component';
-import { RequestAppPublicationComponent } from '../components/app-publication/app-publication.component';
+import { RequestAppRegistrationComponent } from '../app-registration/app-registration.component';
+import { RequestAppPublicationComponent } from '../app-publication/app-publication.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from '../services/auth.guard';
 
