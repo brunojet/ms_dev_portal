@@ -4,7 +4,9 @@ export interface TableColumn<T> {
   cell: (element: T) => string;
 }
 
-export interface TableData<T> {
-  dataSource: T[];
-  dynamicColumns: TableColumn<T>[];
+export interface BaseTableColumns {
+    createdAt: Date;
+    updatedAt: Date;
+    status: string;
+    author: string;
 }

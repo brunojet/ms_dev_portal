@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { ReusableTableComponent } from '../components/reusable-table/reusable-table.component';
-import { TableColumn } from '../components/reusable-table/reusable-table.model';
+import {
+  TableColumn,
+  BaseTableColumns,
+} from '../components/reusable-table/reusable-table.model';
 
-interface Registration {
-  createdAt: Date;
-  updatedAt: Date;
+interface Registration extends BaseTableColumns {
   appName: string;
   packageName: string;
-  status: string;
-  author: string;
 }
 
 @Component({
@@ -18,9 +17,7 @@ interface Registration {
   templateUrl: './app-registration.component.html',
   styleUrls: ['./app-registration.component.css'],
 })
-export class AppRegistrationComponent
-  extends ReusableTableComponent<Registration>
-{
+export class AppRegistrationComponent extends ReusableTableComponent<Registration> {
   override dataSource: Registration[] = [
     {
       createdAt: new Date(),

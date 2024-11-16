@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { ReusableTableComponent } from '../components/reusable-table/reusable-table.component';
-import { TableColumn } from '../components/reusable-table/reusable-table.model';
+import {
+  TableColumn,
+  BaseTableColumns,
+} from '../components/reusable-table/reusable-table.model';
 
-interface Publication {
-  createdAt: Date;
-  updatedAt: Date;
+interface Publication extends BaseTableColumns {
   appName: string;
   appVersion: string;
   deviceModel: string;
-  status: string;
-  author: string;
 }
 
 @Component({
