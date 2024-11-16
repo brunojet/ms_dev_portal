@@ -15,3 +15,18 @@
 .content {
   padding: 20px;
 }
+
+@media (max-width: 600px) {
+  .sidenav {
+    width: 100%;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+}
