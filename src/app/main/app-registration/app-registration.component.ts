@@ -21,14 +21,16 @@ export class AppRegistrationComponent extends ReusableTableComponent<Registratio
   override tableTitle = 'Cadastro de Aplicativos';
   override dataSource: Registration[] = [
     {
+      title: 'App 1, com.example.app3',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 1',
-      packageName: 'com.example.app1',
+      packageName: 'com.example.app2',
       status: 'Em Andamento',
       author: 'User 1',
     },
     {
+      title: 'App 2, com.example.app2',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 2',
@@ -37,6 +39,7 @@ export class AppRegistrationComponent extends ReusableTableComponent<Registratio
       author: 'User 2',
     },
     {
+      title: 'App 3, com.example.app3',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 3',
@@ -45,6 +48,7 @@ export class AppRegistrationComponent extends ReusableTableComponent<Registratio
       author: 'User 3',
     },
     {
+      title: 'App 4, com.example.app4',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 4',

@@ -22,6 +22,7 @@ export class AppPublicationComponent extends ReusableTableComponent<Publication>
   override tableTitle = 'Publicação de Aplicativos';
   override dataSource: Publication[] = [
     {
+      title: 'App 1, versão 1.0.0, Model X',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 1',
@@ -31,6 +32,7 @@ export class AppPublicationComponent extends ReusableTableComponent<Publication>
       author: 'User 1',
     },
     {
+      title: 'App 2, versão 1.1.0, Model Y',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 2',
@@ -40,6 +42,7 @@ export class AppPublicationComponent extends ReusableTableComponent<Publication>
       author: 'User 2',
     },
     {
+      title: 'App 3, versão 2.0.0, Model Z',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 3',
@@ -49,6 +52,7 @@ export class AppPublicationComponent extends ReusableTableComponent<Publication>
       author: 'User 3',
     },
     {
+      title: 'App 4, versão 2.1.0, Model A',
       createdAt: new Date(),
       updatedAt: new Date(),
       appName: 'App 4',
