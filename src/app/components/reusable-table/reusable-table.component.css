@@ -28,7 +28,8 @@
   width: 100%;
 }
 
-.mat-header-cell, .mat-cell {
+.mat-header-cell,
+.mat-cell {
   padding: 8px;
 }
 
@@ -60,7 +61,8 @@
     padding: 10px;
   }
 
-  .mat-header-cell, .mat-cell {
+  .mat-header-cell,
+  .mat-cell {
     padding: 4px;
   }
 

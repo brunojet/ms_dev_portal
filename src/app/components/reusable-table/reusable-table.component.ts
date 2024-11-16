@@ -15,6 +15,7 @@ import { DeviceService } from '../../services/device.service';
 export class ReusableTableComponent<T extends { status: string }>
   implements OnInit
 {
+  isInitialized: boolean = false;
   constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {
@@ -35,8 +36,10 @@ export class ReusableTableComponent<T extends { status: string }>
     }
 
     this.filter('in-progress');
+    this.isInitialized = true;
   }
 
+  @Input() tableTitle: string = 'Unknown';
   @Input() dataSource: T[] = [];
   @Input() dynamicColumns: TableColumn<T>[] = [];
 

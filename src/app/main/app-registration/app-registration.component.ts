@@ -18,6 +18,7 @@ interface Registration extends TableColumns {
   styleUrls: ['./app-registration.component.css'],
 })
 export class AppRegistrationComponent extends ReusableTableComponent<Registration> {
+  override tableTitle = 'Cadastro de Aplicativos';
   override dataSource: Registration[] = [
     {
       createdAt: new Date(),

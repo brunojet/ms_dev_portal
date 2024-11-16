@@ -1,40 +1,43 @@
-<div class="toolbar">
-    <div class="left-buttons">
-        <button mat-raised-button color="primary" (click)="filter('in-progress')">Em Andamento</button>
-        <button mat-raised-button color="accent" (click)="filter('completed')">Encerrados</button>
+<div *ngIf="isInitialized">
+    <h2>{{ tableTitle }}</h2>
+    <div class="toolbar">
+        <div class="left-buttons">
+            <button mat-raised-button color="primary" (click)="filter('in-progress')">Em Andamento</button>
+            <button mat-raised-button color="accent" (click)="filter('completed')">Encerrados</button>
+        </div>
+        <div class="right-button">
+            <button mat-raised-button color="warn" (click)="createNewRequest()">Novo Pedido</button>
+        </div>
     </div>
-    <div class="right-button">
-        <button mat-raised-button color="warn" (click)="createNewRequest()">Novo Pedido</button>
+    <div class="table-container">
+        <mat-table [dataSource]="filteredData" class="mat-elevation-z8">
+            <ng-container matColumnDef="createdAt">
+                <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.createdAt | date}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedAt">
+                <mat-header-cell *matHeaderCellDef> Data de Atualização </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.updatedAt | date}} </mat-cell>
+            </ng-container>
+
+            <ng-container *ngFor="let column of dynamicColumns" [matColumnDef]="column.columnDef">
+                <mat-header-cell *matHeaderCellDef> {{column.header}} </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{column.cell(element)}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="author">
+                <mat-header-cell *matHeaderCellDef> Autor </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
     </div>
-</div>
-<div class="table-container">
-    <mat-table [dataSource]="filteredData" class="mat-elevation-z8">
-        <ng-container matColumnDef="createdAt">
-            <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.createdAt | date}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="updatedAt">
-            <mat-header-cell *matHeaderCellDef> Data de Atualização </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.updatedAt | date}} </mat-cell>
-        </ng-container>
-
-        <ng-container *ngFor="let column of dynamicColumns" [matColumnDef]="column.columnDef">
-            <mat-header-cell *matHeaderCellDef> {{column.header}} </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{column.cell(element)}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="author">
-            <mat-header-cell *matHeaderCellDef> Autor </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
 </div>

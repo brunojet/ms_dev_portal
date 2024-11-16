@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
@@ -30,14 +30,15 @@ export class MainComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     const groups = this.authService.getUserGroups();
     this.isAdmin = groups.includes('Admin');
     this.isDev = groups.includes('Dev');
-    this.checkScreenSize();
+    this.cdr.detectChanges();
   }
 
   @HostListener('window:resize', ['$event'])

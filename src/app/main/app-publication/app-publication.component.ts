@@ -19,6 +19,7 @@ interface Publication extends TableColumns {
   styleUrls: ['./app-publication.component.css'],
 })
 export class AppPublicationComponent extends ReusableTableComponent<Publication> {
+  override tableTitle = 'Publicação de Aplicativos';
   override dataSource: Publication[] = [
     {
       createdAt: new Date(),
