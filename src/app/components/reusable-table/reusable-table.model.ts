@@ -4,7 +4,7 @@ export interface TableColumn<T> {
   cell: (element: T) => string;
 }
 
-export interface BaseTableColumns {
+export interface TableColumns {
     createdAt: Date;
     updatedAt: Date;
     status: string;

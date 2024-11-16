@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ReusableTableComponent } from '../components/reusable-table/reusable-table.component';
 import {
   TableColumn,
-  BaseTableColumns,
+  TableColumns,
 } from '../components/reusable-table/reusable-table.model';
 
-interface Publication extends BaseTableColumns {
+interface Publication extends TableColumns {
   appName: string;
   appVersion: string;
   deviceModel: string;
