@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ReusableTableComponent } from '../components/reusable-table/reusable-table.component';
+import { ReusableTableComponent } from '../../components/reusable-table/reusable-table.component';
 import {
   TableColumn,
   TableColumns,
-} from '../components/reusable-table/reusable-table.model';
+} from '../../components/reusable-table/reusable-table.model';
 
 interface Publication extends TableColumns {
   appName: string;

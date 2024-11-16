@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .left-buttons {
@@ -12,6 +13,7 @@
 .right-button {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .table-container {
@@ -19,14 +21,14 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  overflow-x: auto;
 }
 
 .mat-table {
   width: 100%;
 }
 
-.mat-header-cell,
-.mat-cell {
+.mat-header-cell, .mat-cell {
   padding: 8px;
 }
 
@@ -36,4 +38,33 @@
 
 .mat-row:hover {
   background-color: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .left-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .right-button {
+    margin-top: 10px;
+  }
+
+  .table-container {
+    padding: 10px;
+  }
+
+  .mat-header-cell, .mat-cell {
+    padding: 4px;
+  }
+
+  .hide-mobile {
+    display: none;
+  }
 }

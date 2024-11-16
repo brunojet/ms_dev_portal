@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../services/auth.service';
+import { DeviceService } from '../services/device.service';
 
 @Component({
   selector: 'app-main',
@@ -27,7 +28,10 @@ export class MainComponent implements OnInit {
   isDev = false;
   isMobile = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private deviceService: DeviceService
+  ) {}
 
   ngOnInit(): void {
     const groups = this.authService.getUserGroups();
@@ -42,7 +46,7 @@ export class MainComponent implements OnInit {
   }
 
   checkScreenSize(): void {
-    this.isMobile = window.innerWidth <= 600;
+    this.isMobile = this.deviceService.isMobileDevice();
   }
 
   closeSidenav(): void {

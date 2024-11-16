@@ -1,13 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-
-interface TableColumn<T> {
-  columnDef: string;
-  header: string;
-  cell: (element: T) => string;
-}
+import { TableColumn } from './reusable-table.model';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-reusable-table',
@@ -19,22 +15,33 @@ interface TableColumn<T> {
 export class ReusableTableComponent<T extends { status: string }>
   implements OnInit
 {
+  constructor(private deviceService: DeviceService) {}
+
+  ngOnInit(): void {
+    if (this.deviceService.isMobileDevice()) {
+      this.displayedColumns = [
+        'createdAt',
+        ...this.dynamicColumns.map((col) => col.columnDef),
+        'status',
+      ];
+    } else {
+      this.displayedColumns = [
+        'createdAt',
+        'updatedAt',
+        ...this.dynamicColumns.map((col) => col.columnDef),
+        'status',
+        'author',
+      ];
+    }
+
+    this.filter('in-progress');
+  }
+
   @Input() dataSource: T[] = [];
   @Input() dynamicColumns: TableColumn<T>[] = [];
 
   displayedColumns: string[] = [];
   filteredData: T[] = [];
-
-  ngOnInit(): void {
-    this.displayedColumns = [
-      'createdAt',
-      'updatedAt',
-      ...this.dynamicColumns.map((col) => col.columnDef),
-      'status',
-      'author',
-    ];
-    this.filter('in-progress');
-  }
 
   filter(status: string): void {
     if (status === 'in-progress') {
