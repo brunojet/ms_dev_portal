@@ -1,94 +1,79 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { Component } from '@angular/core';
+import { ReusableTableComponent } from '../components/reusable-table/reusable-table.component';
+import { TableColumn } from '../components/reusable-table/reusable-table.model';
 
 interface Publication {
-  creationDate: Date;
-  updateDate: Date;
+  createdAt: Date;
+  updatedAt: Date;
   appName: string;
   appVersion: string;
   deviceModel: string;
   status: string;
-  requestingUser: string;
+  author: string;
 }
 
 @Component({
-  selector: 'app-request-app-publication',
+  selector: 'app-app-publication',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatIconModule, MatButtonModule],
+  imports: [ReusableTableComponent],
   templateUrl: './app-publication.component.html',
   styleUrls: ['./app-publication.component.css'],
 })
-export class RequestAppPublicationComponent implements OnInit {
-  publications: Publication[] = [
+export class AppPublicationComponent extends ReusableTableComponent<Publication> {
+  override dataSource: Publication[] = [
     {
-      creationDate: new Date(),
-      updateDate: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       appName: 'App 1',
       appVersion: '1.0.0',
       deviceModel: 'Model X',
       status: 'Em Andamento',
-      requestingUser: 'User 1',
+      author: 'User 1',
     },
     {
-      creationDate: new Date(),
-      updateDate: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       appName: 'App 2',
       appVersion: '1.1.0',
       deviceModel: 'Model Y',
       status: 'Encerrado',
-      requestingUser: 'User 2',
+      author: 'User 2',
     },
     {
-      creationDate: new Date(),
-      updateDate: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       appName: 'App 3',
       appVersion: '2.0.0',
       deviceModel: 'Model Z',
       status: 'Em Andamento',
-      requestingUser: 'User 3',
+      author: 'User 3',
     },
     {
-      creationDate: new Date(),
-      updateDate: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       appName: 'App 4',
       appVersion: '2.1.0',
       deviceModel: 'Model A',
       status: 'Encerrado',
-      requestingUser: 'User 4',
+      author: 'User 4',
     },
   ];
-  filteredPublications: Publication[] = [];
-  displayedColumns: string[] = [
-    'creationDate',
-    'updateDate',
-    'appName',
-    'appVersion',
-    'deviceModel',
-    'status',
-    'requestingUser',
+
+  override dynamicColumns: TableColumn<Publication>[] = [
+    {
+      columnDef: 'appName',
+      header: 'Nome do Aplicativo',
+      cell: (element: Publication) => `${element.appName}`,
+    },
+    {
+      columnDef: 'appVersion',
+      header: 'Versão do Aplicativo',
+      cell: (element: Publication) => `${element.appVersion}`,
+    },
+    {
+      columnDef: 'deviceModel',
+      header: 'Modelo do Dispositivo',
+      cell: (element: Publication) => `${element.deviceModel}`,
+    },
   ];
-
-  ngOnInit(): void {
-    this.filter('in-progress');
-  }
-
-  filter(status: string): void {
-    if (status === 'in-progress') {
-      this.filteredPublications = this.publications.filter(
-        (pub) => pub.status === 'Em Andamento'
-      );
-    } else if (status === 'completed') {
-      this.filteredPublications = this.publications.filter(
-        (pub) => pub.status === 'Encerrado'
-      );
-    }
-  }
-
-  createNewRequest(): void {
-    // Lógica para criar um novo pedido de publicação
-    console.log('Criar novo pedido de publicação');
-  }
 }

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main.component';
-import { RequestAppRegistrationComponent } from '../app-registration/app-registration.component';
-import { RequestAppPublicationComponent } from '../app-publication/app-publication.component';
+import { AppRegistrationComponent as AppRegistrationComponent } from '../app-registration/app-registration.component';
+import { AppPublicationComponent } from '../app-publication/app-publication.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from '../services/auth.guard';
 
@@ -17,12 +17,12 @@ export const mainRoutes: Routes = [
       },
       {
         path: 'app-registration',
-        component: RequestAppRegistrationComponent,
+        component: AppRegistrationComponent,
         canActivate: [AuthGuard],
       },
       {
         path: 'app-publication',
-        component: RequestAppPublicationComponent,
+        component: AppPublicationComponent,
         canActivate: [AuthGuard],
       },
       {

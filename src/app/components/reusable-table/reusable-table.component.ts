@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 
-interface TableColumn {
+interface TableColumn<T> {
   columnDef: string;
   header: string;
-  cell: (element: any) => string;
+  cell: (element: T) => string;
 }
 
 @Component({
@@ -16,22 +16,24 @@ interface TableColumn {
   templateUrl: './reusable-table.component.html',
   styleUrls: ['./reusable-table.component.css'],
 })
-export class ReusableTableComponent implements OnInit {
-  @Input() dataSource: any[] = [];
-  @Input() dynamicColumns: TableColumn[] = [];
+export class ReusableTableComponent<T extends { status: string }>
+  implements OnInit
+{
+  @Input() dataSource: T[] = [];
+  @Input() dynamicColumns: TableColumn<T>[] = [];
 
   displayedColumns: string[] = [];
-
-  filteredData: any[] = [];
+  filteredData: T[] = [];
 
   ngOnInit(): void {
     this.displayedColumns = [
       'createdAt',
       'updatedAt',
       ...this.dynamicColumns.map((col) => col.columnDef),
+      'status',
       'author',
     ];
-    this.filteredData = this.dataSource;
+    this.filter('in-progress');
   }
 
   filter(status: string): void {
@@ -43,6 +45,8 @@ export class ReusableTableComponent implements OnInit {
       this.filteredData = this.dataSource.filter(
         (item) => item.status === 'Encerrado'
       );
+    } else {
+      this.filteredData = this.dataSource;
     }
   }
 

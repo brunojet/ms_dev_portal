@@ -24,6 +24,11 @@
             <mat-cell *matCellDef="let element"> {{column.cell(element)}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="author">
             <mat-header-cell *matHeaderCellDef> Autor </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
