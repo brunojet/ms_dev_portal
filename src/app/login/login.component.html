@@ -7,12 +7,13 @@
             <form (ngSubmit)="onLogin()">
                 <mat-form-field appearance="fill">
                     <mat-label>Usuário</mat-label>
-                    <input matInput [(ngModel)]="username" name="username" placeholder="Digite seu usuário" required>
+                    <input matInput [(ngModel)]="username" name="username" placeholder="Digite seu usuário" required
+                        autocomplete="username">
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Senha</mat-label>
                     <input matInput [(ngModel)]="password" name="password" type="password"
-                        placeholder="Digite sua senha" required>
+                        placeholder="Digite sua senha" required autocomplete="current-password">
                 </mat-form-field>
                 <button mat-raised-button color="primary" type="submit">Entrar</button>
             </form>
