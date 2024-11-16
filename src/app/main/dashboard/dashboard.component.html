@@ -1,0 +1,15 @@
+<h2>Dashboard</h2>
+<div class="charts-container">
+    <div class="chart">
+        <h3>Cadastro de Aplicativos</h3>
+        <canvas baseChart [data]="registrationChartData" [labels]="chartLabels" [type]="chartType"
+            [options]="chartOptions">
+        </canvas>
+    </div>
+    <div class="chart">
+        <h3>Publicação de Aplicativos</h3>
+        <canvas baseChart [data]="publicationChartData" [labels]="chartLabels" [type]="chartType"
+            [options]="chartOptions">
+        </canvas>
+    </div>
+</div>
