@@ -7,23 +7,28 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
-  login(username: string, password: string): boolean {
-    // Simulação de resposta do backend
-    if (username === 'admin' && password === 'admin') {
-      // Simulação de um token JWT
-      const token = 'fake-jwt-token-for-admin';
-      const groups = ['Admin'];
-      localStorage.setItem('token', token);
-      localStorage.setItem('userGroups', JSON.stringify(groups));
-      return true;
-    } else if (username === 'dev' && password === 'dev') {
-      const token = 'fake-jwt-token-for-dev';
-      const groups = ['Dev'];
-      localStorage.setItem('token', token);
-      localStorage.setItem('userGroups', JSON.stringify(groups));
-      return true;
-    }
-    return false;
+  login(username: string, password: string): Promise<boolean> {
+    return new Promise((resolve) => {
+      // Simulação de resposta do backend
+      setTimeout(() => {
+        if (username === 'admin' && password === 'admin') {
+          // Simulação de um token JWT
+          const token = 'fake-jwt-token-for-admin';
+          const groups = ['Admin'];
+          localStorage.setItem('token', token);
+          localStorage.setItem('userGroups', JSON.stringify(groups));
+          resolve(true);
+        } else if (username === 'dev' && password === 'dev') {
+          const token = 'fake-jwt-token-for-dev';
+          const groups = ['Dev'];
+          localStorage.setItem('token', token);
+          localStorage.setItem('userGroups', JSON.stringify(groups));
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      }, 1000); // Simula um atraso de 1 segundo
+    });
   }
 
   logout(): void {

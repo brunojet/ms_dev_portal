@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    console.log('MainComponent initialized');
     const groups = this.authService.getUserGroups();
     this.isAdmin = groups.includes('Admin');
     this.isDev = groups.includes('Dev');

@@ -29,16 +29,22 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    console.log('LoginComponent initialized');
     if (this.authService.isLoggedIn()) {
+      console.log('User already logged in');
       this.router.navigate(['/main']);
     }
   }
 
   onLogin(): void {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/main']);
-    } else {
-      alert('Login falhou. Usuário ou senha incorretos.');
-    }
+    console.log('Login clicked');
+    this.authService.login(this.username, this.password).then((success) => {
+      if (success) {
+        console.log('User is logged in');
+        this.router.navigate(['/main']);
+      } else {
+        alert('Login falhou. Usuário ou senha incorretos.');
+      }
+    });
   }
 }
