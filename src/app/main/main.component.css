@@ -11,8 +11,13 @@ main {
   padding: 20px;
 }
 
+.container {
+  display: flex;
+}
+
 .dev-menu {
-  margin-bottom: 20px;
+  width: 200px; /* Largura fixa para o menu */
+  margin-right: 20px; /* Espaço entre o menu e o conteúdo */
 }
 
 .dev-menu ul {
@@ -32,4 +37,12 @@ main {
 
 .dev-menu a:hover {
   text-decoration: underline;
+}
+
+.dev-menu a.active {
+  font-weight: bold;
+}
+
+.content {
+  flex-grow: 1; /* O conteúdo ocupa o espaço restante */
 }
