@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,25 +22,36 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   username = '';
   password = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    console.log('LoginComponent inicializado');
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/main']);
     }
   }
 
-  onLogin(): void {
-    this.authService.login(this.username, this.password).then((success) => {
+  ngOnDestroy(): void {
+    console.log('LoginComponent destruído');
+  }
+
+  async onLogin(): Promise<void> {
+    try {
+      const success = await this.authService.login(
+        this.username,
+        this.password
+      );
       if (success) {
         this.router.navigate(['/main']);
       } else {
         alert('Login falhou. Usuário ou senha incorretos.');
       }
-    });
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+    }
   }
 }
