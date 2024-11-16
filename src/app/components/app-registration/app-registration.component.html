@@ -1,0 +1,46 @@
+<h2>Cadastro de Aplicativos</h2>
+<div class="toolbar">
+  <div class="left-buttons">
+    <button mat-raised-button color="primary" (click)="filter('in-progress')">Em Andamento</button>
+    <button mat-raised-button color="accent" (click)="filter('completed')">Encerrados</button>
+  </div>
+  <div class="right-button">
+    <button mat-raised-button color="warn" (click)="createNewRequest()">Novo Pedido</button>
+  </div>
+</div>
+<div class="registration-list">
+  <mat-table [dataSource]="filteredRegistrations" class="mat-elevation-z8">
+    <ng-container matColumnDef="creationDate">
+      <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+      <mat-cell *matCellDef="let registration"> {{registration.creationDate | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateDate">
+      <mat-header-cell *matHeaderCellDef> Data de Atualização </mat-header-cell>
+      <mat-cell *matCellDef="let registration"> {{registration.updateDate | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="appName">
+      <mat-header-cell *matHeaderCellDef> Nome do Aplicativo </mat-header-cell>
+      <mat-cell *matCellDef="let registration"> {{registration.appName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="packageName">
+      <mat-header-cell *matHeaderCellDef> Nome do Pacote </mat-header-cell>
+      <mat-cell *matCellDef="let registration"> {{registration.packageName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let registration"> {{registration.status}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="requestingUser">
+      <mat-header-cell *matHeaderCellDef> Usuário Solicitante </mat-header-cell>
+      <mat-cell *matCellDef="let registration"> {{registration.requestingUser}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

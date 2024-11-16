@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestAppPublicationComponent } from './request-app-publication.component';
+import { RequestAppPublicationComponent } from './app-publication.component';
 
 describe('RequestAppPublicationComponent', () => {
   let component: RequestAppPublicationComponent;

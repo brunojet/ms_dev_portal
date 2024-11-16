@@ -2,20 +2,17 @@
     <mat-sidenav mode="side" opened class="sidenav">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <mat-list-item *ngIf="isDev && !isAdmin" routerLink="request-app-registration" routerLinkActive="active">
+            <mat-list-item *ngIf="isDev && !isAdmin" routerLink="app-registration" routerLinkActive="active">
                 <mat-icon matListIcon>app_registration</mat-icon>
                 <span>Cadastro de Aplicativo</span>
             </mat-list-item>
-            <mat-list-item *ngIf="isDev && !isAdmin" routerLink="request-app-publication" routerLinkActive="active">
+            <mat-list-item *ngIf="isDev && !isAdmin" routerLink="app-publication" routerLinkActive="active">
                 <mat-icon matListIcon>publish</mat-icon>
                 <span>Publicação de Aplicativo</span>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            <span>Portal do Desenvolvedor</span>
-        </mat-toolbar>
         <div class="content">
             <router-outlet></router-outlet>
         </div>

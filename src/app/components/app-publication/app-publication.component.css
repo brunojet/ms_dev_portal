@@ -1,0 +1,39 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.left-buttons {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+.right-button {
+  display: flex;
+  align-items: center;
+}
+
+.publication-list {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 8px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.mat-row:hover {
+  background-color: #f5f5f5;
+}
