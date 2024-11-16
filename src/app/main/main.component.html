@@ -1,14 +1,25 @@
-<h2>Bem-vindo à página principal!</h2>
-<div class="container">
-  <nav *ngIf="isDev && !isAdmin" class="dev-menu">
-    <ul>
-      <li><a routerLink="request-app-registration" routerLinkActive="active">Requisitar Cadastro de Aplicativo</a></li>
-      <li><a routerLink="request-app-publication" routerLinkActive="active">Requisitar Publicação de Aplicativo</a></li>
-    </ul>
-  </nav>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+        <mat-toolbar>Menu</mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item *ngIf="isDev && !isAdmin" routerLink="request-app-registration" routerLinkActive="active">
+                <mat-icon matListIcon>app_registration</mat-icon>
+                <span>Cadastro de Aplicativo</span>
+            </mat-list-item>
+            <mat-list-item *ngIf="isDev && !isAdmin" routerLink="request-app-publication" routerLinkActive="active">
+                <mat-icon matListIcon>publish</mat-icon>
+                <span>Publicação de Aplicativo</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <span>Portal do Desenvolvedor</span>
+        </mat-toolbar>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 <p *ngIf="isAdmin">Você tem acesso total.</p>
 <p *ngIf="isDev && !isAdmin">Você pode abrir requisições.</p>

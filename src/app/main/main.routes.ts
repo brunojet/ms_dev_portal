@@ -12,18 +12,18 @@ export const mainRoutes: Routes = [
       {
         path: 'request-app-registration',
         component: RequestAppRegistrationComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'request-app-publication',
         component: RequestAppPublicationComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: '',
         redirectTo: 'request-app-registration',
-        pathMatch: 'full'
-      }
-    ]
-  }
+        pathMatch: 'full',
+      },
+    ],
+  },
 ];
