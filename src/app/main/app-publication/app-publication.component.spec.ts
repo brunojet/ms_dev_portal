@@ -8,9 +8,8 @@ describe('RequestAppPublicationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppPublicationComponent]
-    })
-    .compileComponents();
+      imports: [AppPublicationComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AppPublicationComponent);
     component = fixture.componentInstance;

@@ -1,13 +1,13 @@
-export interface TableColumn<T> {
+export interface ReusableTableColumn<T> {
   columnDef: string;
   header: string;
   cell: (element: T) => string;
 }
 
-export interface TableColumns {
+export interface ReusableTableColumns {
   title: string;
   createdAt: Date;
   updatedAt: Date;
-  status: string;
-  author: string;
+  createdBy: string;
+  updatedBy: string;
 }
