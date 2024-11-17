@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,21 +22,16 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   username = '';
   password = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log('LoginComponent inicializado');
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/main']);
     }
-  }
-
-  ngOnDestroy(): void {
-    console.log('LoginComponent destruído');
   }
 
   async onLogin(): Promise<void> {
