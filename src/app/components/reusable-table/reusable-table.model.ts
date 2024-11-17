@@ -5,9 +5,9 @@ export interface TableColumn<T> {
 }
 
 export interface TableColumns {
-    createdAt: Date;
-    updatedAt: Date;
-    title: string;
-    status: string;
-    author: string;
+  title: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: string;
+  author: string;
 }
