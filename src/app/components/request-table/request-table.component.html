@@ -1,0 +1,10 @@
+<div class="toolbar">
+  <div class="left-buttons">
+    <button mat-raised-button color="primary" (click)="filter('in-progress')">Em Andamento</button>
+    <button mat-raised-button color="accent" (click)="filter('completed')">Encerrados</button>
+  </div>
+  <div class="right-button">
+    <button mat-raised-button color="warn" (click)="createNewRequest()">Novo Pedido</button>
+  </div>
+</div>
+<app-reusable-table [filteredData]="filteredData" [dynamicColumns]="dynamicColumns"></app-reusable-table>

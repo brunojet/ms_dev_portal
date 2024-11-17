@@ -1,0 +1,14 @@
+.charts-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.chart {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+h3 {
+  text-align: center;
+}

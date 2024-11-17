@@ -1,0 +1,5 @@
+<div *ngIf="isLoggedIn()" class="user-info">
+    <span>Bem-vindo, {{ username }}</span>
+    <span *ngIf="userGroups.length">| Perfil: {{ userGroups.join(', ') }}</span>
+    <button (click)="onLogout()">Logout</button>
+</div>

@@ -1,0 +1,32 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 255px;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.content {
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .sidenav {
+    width: 100%;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+}

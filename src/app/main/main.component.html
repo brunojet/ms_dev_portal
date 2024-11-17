@@ -1,0 +1,28 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav" [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile">
+        <mat-toolbar>
+            <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isMobile">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let item of menuItems" [routerLink]="item.path" routerLinkActive="active"
+                (click)="closeSidenav()">
+                <mat-icon matListIcon>{{item.icon}}</mat-icon>
+                <span>{{ item.title }}</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar *ngIf="isMobile">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<p *ngIf="isAdmin">Você tem acesso total.</p>
+<p *ngIf="isDev && !isAdmin">Você pode abrir requisições.</p>
