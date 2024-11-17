@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --watch=false --code-coverage",
+    "coverage": "ng test --watch=false --code-coverage && npx nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "analyze": "source-map-explorer dist/ms_dev_portal/**/*.js"
   },
   "private": true,
