@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppRegistrationComponent } from './app-registration/app-registration.component';
-import { AppPublicationComponent } from './app-publication/app-publication.component';
 import { AuthGuard } from '../services/auth.guard';
 
 export const mainRoutes: Routes = [
@@ -12,20 +10,29 @@ export const mainRoutes: Routes = [
     children: [
       {
         path: 'dashboard',
+        loadComponent: () =>
+          import('./dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent
+          ),
         data: { title: 'Dashboard', icon: 'dashboard' },
-        component: DashboardComponent,
         canActivate: [AuthGuard],
       },
       {
         path: 'app-registration',
+        loadComponent: () =>
+          import('./app-registration/app-registration.component').then(
+            (m) => m.AppRegistrationComponent
+          ),
         data: { title: 'Cadastro de Aplicativos', icon: 'app_registration' },
-        component: AppRegistrationComponent,
         canActivate: [AuthGuard],
       },
       {
         path: 'app-publication',
+        loadComponent: () =>
+          import('./app-publication/app-publication.component').then(
+            (m) => m.AppPublicationComponent
+          ),
         data: { title: 'Publicação de Aplicativos', icon: 'publish' },
-        component: AppPublicationComponent,
         canActivate: [AuthGuard],
       },
       {
