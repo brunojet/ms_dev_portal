@@ -21,7 +21,7 @@ module.exports = function (config) {
         reporters: ['progress', 'kjhtml', 'coverage'],
         port: 9876,
         colors: true,
-        logLevel: config.LOG_DEBUG,
+        logLevel: config.LOG_INFO,
         autoWatch: true,
         browsers: ['ChromeHeadless'],
         customLaunchers: {
