@@ -3,6 +3,7 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['jasmine', '@angular-devkit/build-angular'],
         plugins: [
+            require('karma-coverage'),
             require('karma-jasmine'),
             require('karma-chrome-launcher'),
             require('karma-jasmine-html-reporter'),
@@ -17,7 +18,7 @@ module.exports = function (config) {
             reports: ['html', 'lcovonly', 'text-summary'],
             fixWebpackSourcePaths: true
         },
-        reporters: ['progress', 'kjhtml'],
+        reporters: ['progress', 'kjhtml', 'coverage'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_DEBUG,
@@ -31,28 +32,7 @@ module.exports = function (config) {
                     '--no-sandbox',
                     '--disable-gpu',
                     '--disable-dev-shm-usage',
-                    '--remote-debugging-port=9222',
-                    '--disable-software-rasterizer',
-                    '--disable-extensions',
-                    '--disable-background-networking',
-                    '--disable-background-timer-throttling',
-                    '--disable-backgrounding-occluded-windows',
-                    '--disable-breakpad',
-                    '--disable-client-side-phishing-detection',
-                    '--disable-default-apps',
-                    '--disable-features=site-per-process',
-                    '--disable-hang-monitor',
-                    '--disable-ipc-flooding-protection',
-                    '--disable-popup-blocking',
-                    '--disable-prompt-on-repost',
-                    '--disable-renderer-backgrounding',
-                    '--disable-sync',
-                    '--metrics-recording-only',
-                    '--no-first-run',
-                    '--safebrowsing-disable-auto-update',
-                    '--enable-automation',
-                    '--password-store=basic',
-                    '--use-mock-keychain'
+                    '--remote-debugging-port=9222'
                 ]
             }
         },

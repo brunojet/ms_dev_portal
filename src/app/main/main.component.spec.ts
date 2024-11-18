@@ -11,7 +11,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('MainComponent', () => {
-  console.log('MainComponent');
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
 
