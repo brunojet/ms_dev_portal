@@ -19,6 +19,15 @@ module.exports = function (config) {
             fixWebpackSourcePaths: true
         },
         reporters: ['progress', 'kjhtml', 'coverage'],
+        coverageReporter: {
+            dir: require('path').join(__dirname, './coverage'),
+            reporters: [
+                { type: 'html', subdir: 'html' },
+                { type: 'lcovonly', subdir: '.', file: 'lcov.info' },
+                { type: 'text-summary' }
+            ],
+            fixWebpackSourcePaths: true
+        },
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
