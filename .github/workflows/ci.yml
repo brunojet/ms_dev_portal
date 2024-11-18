@@ -34,12 +34,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Create .nyc_output directory
-        run: mkdir -p .nyc_output
-
-      - name: Run coverage
-        run: npm run coverage
-
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
