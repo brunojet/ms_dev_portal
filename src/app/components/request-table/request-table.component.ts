@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReusableTableComponent } from '../reusable-table/reusable-table.component';
 import { ReusableTableColumn } from '../../components/reusable-table/reusable-table.model';
 import { RequestTableColumns } from '../request-table/request-table.model';
-import { RequestFormComponent } from '../request-form/request-form.component';
+import { ReusableFormComponent } from '../reusable-form/reusable-form.component';
 import { DeviceService } from '../../services/device.service';
 
 @Component({
@@ -54,8 +54,20 @@ export class RequestTableComponent<T extends RequestTableColumns>
   }
 
   createNewRequest(): void {
-    const dialogRef = this.dialog.open(RequestFormComponent, {
-      width: '400px'
+    const fields = [
+      { name: 'name', label: 'Nome', type: 'text' },
+      { name: 'description', label: 'Descrição', type: 'textarea' },
+      { name: 'category', label: 'Categoria', type: 'select', options: [
+        { label: 'Opção 1', value: 'option1' },
+        { label: 'Opção 2', value: 'option2' }
+      ]},
+      { name: 'file', label: 'Arquivo', type: 'file' }
+    ];
+
+    const dialogRef = this.dialog.open(ReusableFormComponent, {
+      height: '1024px',
+      width: '800px',
+      data: { fields }
     });
 
     dialogRef.afterClosed().subscribe(result => {
