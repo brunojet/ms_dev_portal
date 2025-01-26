@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div *ngFor="let field of fields">
+    <ng-container [ngSwitch]="field.type">
+      <mat-form-field *ngSwitchCase="'text'">
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [formControlName]="field.name" [type]="field.type" required>
+      </mat-form-field>
+      <mat-form-field *ngSwitchCase="'textarea'">
+        <mat-label>{{ field.label }}</mat-label>
+        <textarea matInput [formControlName]="field.name" required></textarea>
+      </mat-form-field>
+      <mat-form-field *ngSwitchCase="'select'">
+        <mat-label>{{ field.label }}</mat-label>
+        <mat-select [formControlName]="field.name" required>
+          <mat-option *ngFor="let option of field.options" [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngSwitchCase="'file'">
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [formControlName]="field.name" type="file" (change)="onFileChange($event)" required>
+      </mat-form-field>
+    </ng-container>
+  </div>
+  <div class="modal-actions">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </div>
+</form>
