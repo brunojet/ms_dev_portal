@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { ReusableTableComponent } from '../reusable-table/reusable-table.component';
 import { ReusableTableColumn } from '../../components/reusable-table/reusable-table.model';
 import { RequestTableColumns } from '../request-table/request-table.model';
+import { RequestFormComponent } from '../request-form/request-form.component';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-request-table',
@@ -15,6 +18,10 @@ export class RequestTableComponent<T extends RequestTableColumns>
   extends ReusableTableComponent<T>
   implements OnInit
 {
+  constructor(private dialog: MatDialog, deviceService: DeviceService) {
+    super(deviceService);
+  }
+
   override filteredData: T[] = [];
 
   override ngOnInit(): void {
@@ -47,7 +54,15 @@ export class RequestTableComponent<T extends RequestTableColumns>
   }
 
   createNewRequest(): void {
-    // Lógica para criar um novo pedido
-    console.log('Criar novo pedido');
+    const dialogRef = this.dialog.open(RequestFormComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Handle the result here (e.g., save the new request)
+        console.log('New request:', result);
+      }
+    });
   }
 }
