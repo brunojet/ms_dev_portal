@@ -12,8 +12,13 @@ import { TermsService } from '../services/terms.service';
 export class TermsOfServiceComponent {
   constructor(private router: Router, private termsService: TermsService) {}
 
+  ngOnInit() {
+    console.log('Terms of Service component initialized');
+  }
+
   acceptTerms() {
     this.termsService.acceptTerms();
-    this.router.navigate(['/main']);
+    const redirectUrl = this.termsService.getRedirectUrl() || '/main';
+    this.router.navigate([redirectUrl]);
   }
 }

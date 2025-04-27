@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { TermsService } from './terms.service';
 
 @Injectable({
@@ -8,10 +8,12 @@ import { TermsService } from './terms.service';
 export class TermsGuard implements CanActivate {
   constructor(private termsService: TermsService, private router: Router) {}
 
-  canActivate(): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.termsService.areTermsAccepted()) {
       return true;
     } else {
+      // Store the attempted URL for redirecting after terms acceptance
+      this.termsService.setRedirectUrl(state.url);
       this.router.navigate(['/terms']);
       return false;
     }
