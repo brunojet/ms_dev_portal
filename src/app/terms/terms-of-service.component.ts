@@ -1,26 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TermsService } from '../services/terms.service';
 
 @Component({
   selector: 'app-terms-of-service',
   standalone: true,
   templateUrl: './terms-of-service.component.html',
-  styleUrls: ['./terms-of-service.component.css']
+  styleUrls: ['./terms-of-service.component.css'],
+  providers: [TermsService]
 })
 export class TermsOfServiceComponent {
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    console.log('Terms of Service component initialized');
-    // Check if the terms have already been accepted
-    const termsAccepted = localStorage.getItem('termsAccepted');
-    if (termsAccepted === 'true') {
-      this.router.navigate(['/main']);
-    }
-  }
+  constructor(private router: Router, private termsService: TermsService) {}
 
   acceptTerms() {
-    localStorage.setItem('termsAccepted', 'true');
+    this.termsService.acceptTerms();
     this.router.navigate(['/main']);
   }
 }

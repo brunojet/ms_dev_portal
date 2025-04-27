@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/terms']);
+      this.router.navigate(['/main']);
     }
   }
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         this.password
       );
       if (success) {
-        this.router.navigate(['/terms']);
+        this.router.navigate(['/main']);
       } else {
         alert('Login falhou. Usuário ou senha incorretos.');
       }

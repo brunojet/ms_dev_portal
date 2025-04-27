@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from '../services/auth.guard';
+import { TermsGuard } from '../services/terms.guard';
 
 export const mainRoutes: Routes = [
   {
     path: '',
     loadComponent: () =>
       import('./main.component').then((m) => m.MainComponent),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,TermsGuard],
     children: [
       {
         path: 'dashboard',
@@ -15,7 +16,7 @@ export const mainRoutes: Routes = [
             (m) => m.DashboardComponent
           ),
         data: { title: 'Dashboard', icon: 'dashboard' },
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard,TermsGuard],
       },
       {
         path: 'app-registration',
@@ -24,7 +25,7 @@ export const mainRoutes: Routes = [
             (m) => m.AppRegistrationComponent
           ),
         data: { title: 'Cadastro de Aplicativos', icon: 'app_registration' },
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard,TermsGuard],
       },
       {
         path: 'app-publication',
@@ -33,7 +34,7 @@ export const mainRoutes: Routes = [
             (m) => m.AppPublicationComponent
           ),
         data: { title: 'Publicação de Aplicativos', icon: 'publish' },
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard,TermsGuard],
       },
       {
         path: '',
